@@ -1,0 +1,112 @@
+
+<!doctype html>
+
+<title>Productive Blog</title>
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+<body style="font-family: Open Sans, sans-serif">
+    <section class="px-6 py-8">
+
+
+        <header class="max-w-xl mx-auto mt-20 text-center">
+            <h1 class="text-4xl">
+                Latest <span class="text-blue-500">Productive Blog</span> News
+            </h1>
+
+            <h2 class="inline-flex mt-2">By Shady Alefrangy <img src="./images/lary-head.svg"
+                                                               alt="Head of Lary the mascot"></h2>
+
+
+        </header>
+
+        <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+            <div class="container">
+                <% for (var a = 0; a < posts.length; a++) { %>
+                <article
+        class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
+        <div class="py-6 px-5 lg:flex">
+            <div class="flex-1 lg:mr-8">
+                <img src="./images/illustration-1.png" alt="Blog Post illustration" class="rounded-xl">
+            </div>
+
+            <div class="flex-1 flex flex-col justify-between">
+                <header class="mt-8 lg:mt-0">
+                    <div class="space-x-2">
+                        <a href="#"
+                           class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                           style="font-size: 10px">Techniques</a>
+
+                        <a href="#"
+                           class="px-3 py-1 border border-red-300 rounded-full text-red-300 text-xs uppercase font-semibold"
+                           style="font-size: 10px">Updates</a>
+                    </div>
+
+                    <div class="mt-4">
+                        <h1 class="text-3xl">
+                            <%= posts[a].title  %>
+                            <%= posts[a]._id  %>
+                            
+                        </h1>
+
+                        <span class="mt-2 block text-gray-400 text-xs">
+                                Published at <time><%= posts[a].publishDate  %></time>
+                            </span>
+                    </div>
+                </header>
+
+                <div class="text-sm mt-2">
+                    <p>
+                        <%= posts[a].content  %>
+                    </p>
+
+                </div>
+
+                <footer class="flex justify-between items-center mt-8">
+                    <div class="flex items-center text-sm">
+                        <img src="./images/lary-avatar.svg" alt="Lary avatar">
+                        <div class="ml-3">
+                            <h5 class="font-bold"><%= posts[a].authorId.firstName  %></h5>
+                            <h6>Author at Blog</h6>
+                        </div>
+                    </div>
+
+                    <div class="hidden lg:block">
+                        <a href="#"
+                           class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8"
+                        >Read More</a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </article>
+    <% } %>
+           
+        </main>
+        <nav aria-label="Page navigation example" class="flex justify-center items-center">
+  <ul class="inline-flex -space-x-px">
+    <!-- <li>
+      <a href="#" class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+    </li> -->
+    <% for (var a = 1; a <= pages; a++) { %>
+    <li>
+      <a href="?page=<%= a; %>" class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"><%= a; %></a>
+    </li>
+    <% } %>  
+    
+
+    <!-- <li>
+      <a href="#" class="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+    </li> -->
+  </ul>
+</nav>
+
+        <footer class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
+            <img src="./images/lary-newsletter-icon.svg" alt="" class="mx-auto -mb-6" style="width: 145px;">
+            <h5 class="text-3xl">Stay in touch with the latest posts</h5>
+
+        </footer>
+    </section>
+</body>
